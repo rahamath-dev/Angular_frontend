@@ -1,0 +1,37 @@
+<div class="row">
+    
+    <div class="col-md-4" style="margin-left: 44%;" >
+    <input type="text"
+             style="width: max-content;"
+             [(ngModel)]="filters.keyword"
+             name="keyword"
+             placeholder="search"
+             (input)="listExpenses()">
+     </div>
+     
+<div class="col-md-4">
+ <a class="btn btn-outline-success font-weight-bold amount" style="margin-left:5%; width:40%;" routerLink="/addexpense">Add Expense</a>
+</div>
+</div>
+
+<div>
+   
+<div class="card mt-1" *ngFor="let expense of expenses">
+  
+    <a routerLink="/editexpense/{{expense.id}}" class="card-body flex ">
+    <span class="float-left col-md-2 font-weight-bold expense">{{expense.expense}}</span>
+    <span class="float-right col-md-2 mr-2 badge badge-pill badge-warning font-weight-bold amount">{{expense.amount | currency: 'INR'}}</span>
+    </a>
+    
+    <div class="card-footer">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-info font-weight-bold amount"><a routerLink="/editexpense/{{expense.id}}">Edit</a></button>
+           
+            <button type="button" class="btn btn-outline-danger font-weight-bold amount" (click)="deleteExpense(expense.id)"> Delete</button>
+          </div>
+      
+     
+    
+   </div>
+
+</div>
